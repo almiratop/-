@@ -1,0 +1,22 @@
+﻿<Window x:Class="Частный_детектив.Vostan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Частный_детектив"
+        mc:Ignorable="d"
+        Title="Восстановление доступа" Height="300" Width="400" Closed="Window_Closed" MinWidth="400" MinHeight="300" Icon="log.jpg">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/logo2.jpg" Grid.Column="0" MouseLeftButtonDown="Image_MouseLeftButtonDown" HorizontalAlignment="Left" Cursor="Hand" />
+        <Label Content="Почта" Grid.Row="1"/>
+        <TextBox x:Name="textBoxMail" Grid.Row="2" TextWrapping="Wrap"/>
+        <Button Content="Восстановить" Grid.Row="3" Click="Button_Click"/>
+    </Grid>
+</Window>

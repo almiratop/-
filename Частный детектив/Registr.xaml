@@ -1,0 +1,38 @@
+﻿<Window x:Class="Частный_детектив.Registr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Частный_детектив"
+        mc:Ignorable="d"
+        Title="Регистрация" Height="550" Width="400" Closed="Window_Closed" MinWidth="400" MinHeight="550" Icon="log.jpg">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/logo2.jpg" Grid.Column="0" MouseLeftButtonDown="Image_MouseLeftButtonDown" HorizontalAlignment="Left" Cursor="Hand" />
+        <Label Content="Имя" Grid.Row="1"/>
+        <TextBox x:Name="textBoxName" Grid.Row="2"/>
+        <Label Content="Номер телефона" Grid.Row="3"/>
+        <TextBox x:Name="textBoxNumber" Grid.Row="4" />
+        <Label Content="Почта" Grid.Row="5"/>
+        <TextBox x:Name="textBoxMail" Grid.Row="6"/>
+        <Label Content="Логин" Grid.Row="7"/>
+        <TextBox x:Name="textBoxLogin" Grid.Row="8"/>
+        <Label Content="Пароль" Grid.Row="9"/>
+        <TextBox x:Name="textBoxPassword" Grid.Row="10" />
+        <Button Content="Регистрация" Grid.Row="11" Click="Button_Click"/>
+
+    </Grid>
+</Window>

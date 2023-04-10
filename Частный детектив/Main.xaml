@@ -1,0 +1,19 @@
+﻿<Page x:Class="Частный_детектив.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Частный_детектив"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="700"
+      Title="Main">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock TextWrapping="Wrap" Grid.Row="0" HorizontalAlignment="Center" FontSize="20" Grid.ColumnSpan="2" Margin="120,0,120,246.711" Grid.RowSpan="2" ><Run Text="Агентство &quot;Частный детектив&quot;- всё по честному! "/><LineBreak/><Run Foreground="#FF3552D8" Text="Конфиденциально"/><Run Text="!"/></TextBlock>
+        <TextBlock Grid.Row="1" Margin ="15,15.289,15,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="14"><Run Text="Добро пожаловать в Агентство &quot;Частный детектив&quot;!"/><LineBreak/><Run Text="Меня зовут Николай Анатольевич, я частный детектив и руководитель агентства."/><LineBreak/><Run Text="В жизни иногда возникают проблемы, решение которых своими силами не представляется возможным. Помочь разобраться в ситуации, сложившейся не лучшим образом, может только профессионал, обладающий определенным опытом и возможностями."/><LineBreak/><Run/><LineBreak/><Run Text="Наше детективное агентство специализируется на решении различных проблем заказчиков и предоставлении информационных услуг. Обратиться к нам вы можете не раздумывая, относится ли ваша проблема к сфере деятельности частного детектива и входит ли она в перечень услуг детективного агентства. Мы решаем, как стандартные (в основном, это поиск людей и семейные вопросы), так и проблемы индивидуального нестандартного характера."/><LineBreak/><LineBreak/><Run Text="Получить консультацию и заказать услуги, вы можете связавшись с нами любым, удобным для вас, способом."/></TextBlock>
+    </Grid>
+</Page>

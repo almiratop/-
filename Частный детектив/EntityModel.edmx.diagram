@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="de6ac7026df747c791c6f01a5c83f1f4" Name="Diagram1" ZoomLevel="68" >
+        <EntityTypeShape EntityType="EntityModel.User" Width="1.5" PointX="4.125" PointY="1.875" />
+        <EntityTypeShape EntityType="EntityModel.Detective" Width="1.5" PointX="1.75" PointY="3.625" />
+        <EntityTypeShape EntityType="EntityModel.Client" Width="1.5" PointX="7.375" PointY="3.625" />
+        <EntityTypeShape EntityType="EntityModel.Sms" Width="1.5" PointX="4.75" PointY="6.375" />
+        <EntityTypeShape EntityType="EntityModel.Usluga" Width="1.5" PointX="7.75" PointY="7" />
+        <EntityTypeShape EntityType="EntityModel.Zayavka" Width="1.5" PointX="1.75" PointY="6.625" />
+        <AssociationConnector Association="EntityModel.UserDetective" />
+        <AssociationConnector Association="EntityModel.UserClient" />
+        <AssociationConnector Association="EntityModel.DetectiveZayavka" />
+        <AssociationConnector Association="EntityModel.DetectiveClient" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

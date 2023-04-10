@@ -1,0 +1,29 @@
+﻿<Window x:Class="Частный_детектив.Klient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Частный_детектив"
+        mc:Ignorable="d"
+        Title="Личный кабинет" Height="600" Width="700" Closed="Window_Closed" MinWidth="700" MinHeight="600" Icon="log.jpg">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.4*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="/logo2.jpg" Grid.Column="0" HorizontalAlignment="Left" Cursor="Hand" />
+            <Button Content="Сообщения" Grid.Column="1" Click="Button_Click_1"/>
+            <Button Content="Выход" Grid.Column="2" Click="Button_Click"/>
+        </Grid>
+        
+        <TextBlock TextWrapping="Wrap" Grid.Row="1" HorizontalAlignment="Center" FontSize="20" Margin="120,0" ><Run Text="Агентство &quot;Частный детектив&quot;- всё по честному! "/><LineBreak/><Run Foreground="#FF3552D8" Text="Конфиденциально"/><Run Text="!"/></TextBlock>
+        <TextBlock x:Name="textblock" Grid.Row="2" Margin ="15,15,15,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Height="116"/>
+    </Grid>
+</Window>

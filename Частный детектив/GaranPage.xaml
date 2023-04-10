@@ -1,0 +1,14 @@
+﻿<Page x:Class="Частный_детектив.GaranPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Частный_детектив"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="700"
+      Title="GaranPage">
+
+    <Grid>
+        <TextBlock Margin="20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"><Run FontSize="20" Text="ГАРАНТИИ"/><LineBreak/><LineBreak/><Run Text="Мы работает с 1999 года не имея нареканий со стороны заказчиков, так как ответственно относимся к работе и добросовестно выполняем свои обязательства! Мы уважительно относимся ко всем, обратившимся к нам за помощью, и требуем от них взаимности!"/><LineBreak/><Run/><LineBreak/><Run Text="Наше детективное агентство гарантирует:"/><LineBreak/><Run Text="Профессионализм,"/><LineBreak/><Run Text="Абсолютную конфиденциальность,"/><LineBreak/><Run Text="Серьезный и аналитический подход,"/><LineBreak/><Run Text="Оперативность,"/><LineBreak/><Run Text="Добросовестность при выполнении заказа,"/><LineBreak/><Run Text="Достоверность предоставляемой информации,"/><LineBreak/><Run Text="Соблюдение морально-этических норм."/><LineBreak/><Run/><LineBreak/><Run Text="В любой ситуации я отстаиваю интересы своих клиентов!"/><LineBreak/><Run/><LineBreak/><Run Text="Всегда рад возможности помочь Вам в решении "/><Run Text="проблем!"/></TextBlock>
+    </Grid>
+</Page>

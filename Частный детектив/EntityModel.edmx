@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EntityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EntityModelStoreContainer">
+    <EntitySet Name="Users" EntityType="EntityModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Detectives" EntityType="EntityModel.Store.Detectives" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Clients" EntityType="EntityModel.Store.Clients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Smss" EntityType="EntityModel.Store.Smss" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Uslugas" EntityType="EntityModel.Store.Uslugas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zayavkas" EntityType="EntityModel.Store.Zayavkas" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserDetective" Association="EntityModel.Store.UserDetective">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Detective" EntitySet="Detectives" />
+    </AssociationSet>
+    <AssociationSet Name="UserClient" Association="EntityModel.Store.UserClient">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="DetectiveZayavka" Association="EntityModel.Store.DetectiveZayavka">
+      <End Role="Detective" EntitySet="Detectives" />
+      <End Role="Zayavka" EntitySet="Zayavkas" />
+    </AssociationSet>
+    <AssociationSet Name="DetectiveClient" Association="EntityModel.Store.DetectiveClient">
+      <End Role="Detective" EntitySet="Detectives" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detectives">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DetectiveId" Type="int" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Smss">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DetectiveId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Uslugas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zayavkas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TextZayavki" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DetectiveId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserDetective">
+    <End Role="User" Type="EntityModel.Store.Users" Multiplicity="1" />
+    <End Role="Detective" Type="EntityModel.Store.Detectives" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Detective">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserClient">
+    <End Role="User" Type="EntityModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Client" Type="EntityModel.Store.Clients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetectiveZayavka">
+    <End Role="Detective" Type="EntityModel.Store.Detectives" Multiplicity="1" />
+    <End Role="Zayavka" Type="EntityModel.Store.Zayavkas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detective">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Zayavka">
+        <PropertyRef Name="DetectiveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DetectiveClient">
+    <End Role="Detective" Type="EntityModel.Store.Detectives" Multiplicity="1" />
+    <End Role="Client" Type="EntityModel.Store.Clients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detective">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="DetectiveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EntityModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="EntityModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="EntityModel.User" />
+          <EntitySet Name="Detectives" EntityType="EntityModel.Detective" />
+          <EntitySet Name="Clients" EntityType="EntityModel.Client" />
+          <EntitySet Name="Smss" EntityType="EntityModel.Sms" />
+          <EntitySet Name="Uslugas" EntityType="EntityModel.Usluga" />
+          <EntitySet Name="Zayavkas" EntityType="EntityModel.Zayavka" />
+          <AssociationSet Name="UserDetective" Association="EntityModel.UserDetective">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Detective" EntitySet="Detectives" />
+          </AssociationSet>
+          <AssociationSet Name="UserClient" Association="EntityModel.UserClient">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="DetectiveZayavka" Association="EntityModel.DetectiveZayavka">
+            <End Role="Detective" EntitySet="Detectives" />
+            <End Role="Zayavka" EntitySet="Zayavkas" />
+          </AssociationSet>
+          <AssociationSet Name="DetectiveClient" Association="EntityModel.DetectiveClient">
+            <End Role="Detective" EntitySet="Detectives" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Role" Type="String" Nullable="false" />
+          <NavigationProperty Name="Detective" Relationship="EntityModel.UserDetective" FromRole="User" ToRole="Detective" />
+          <NavigationProperty Name="Client" Relationship="EntityModel.UserClient" FromRole="User" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Detective">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <Property Name="Mail" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="EntityModel.UserDetective" FromRole="Detective" ToRole="User" />
+          <NavigationProperty Name="Zayavka" Relationship="EntityModel.DetectiveZayavka" FromRole="Detective" ToRole="Zayavka" />
+          <NavigationProperty Name="Client" Relationship="EntityModel.DetectiveClient" FromRole="Detective" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <Property Name="Mail" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="EntityModel.UserClient" FromRole="Client" ToRole="User" />
+          <NavigationProperty Name="Detective" Relationship="EntityModel.DetectiveClient" FromRole="Client" ToRole="Detective" />
+          <Property Name="DetectiveId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="Sender" Type="String" Nullable="false" />
+          <Property Name="DetectiveId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usluga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Price" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zayavka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <Property Name="TextZayavki" Type="String" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" />
+          <NavigationProperty Name="Detective" Relationship="EntityModel.DetectiveZayavka" FromRole="Zayavka" ToRole="Detective" />
+          <Property Name="DetectiveId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserDetective">
+          <End Type="EntityModel.User" Role="User" Multiplicity="1" />
+          <End Type="EntityModel.Detective" Role="Detective" Multiplicity="0..1" />
+        </Association>
+        <Association Name="UserClient">
+          <End Type="EntityModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="EntityModel.Client" Role="Client" Multiplicity="0..1" />
+        </Association>
+        <Association Name="DetectiveZayavka">
+          <End Type="EntityModel.Detective" Role="Detective" Multiplicity="1" />
+          <End Type="EntityModel.Zayavka" Role="Zayavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detective">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zayavka">
+              <PropertyRef Name="DetectiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DetectiveClient">
+          <End Type="EntityModel.Detective" Role="Detective" Multiplicity="1" />
+          <End Type="EntityModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detective">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="DetectiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EntityModelStoreContainer" CdmEntityContainer="EntityModelContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detectives">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Detective)">
+        <MappingFragment StoreEntitySet="Detectives">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Client)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="DetectiveId" ColumnName="DetectiveId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Smss">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Sms)">
+        <MappingFragment StoreEntitySet="Smss">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="DetectiveId" ColumnName="DetectiveId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uslugas">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Usluga)">
+        <MappingFragment StoreEntitySet="Uslugas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zayavkas">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Zayavka)">
+        <MappingFragment StoreEntitySet="Zayavkas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="TextZayavki" ColumnName="TextZayavki" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DetectiveId" ColumnName="DetectiveId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserDetective" TypeName="EntityModel.UserDetective" StoreEntitySet="Detectives">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Detective">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserClient" TypeName="EntityModel.UserClient" StoreEntitySet="Clients">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Client">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="User_Id" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
